@@ -1,0 +1,193 @@
+
+{% load static %}
+
+
+
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>I-N-K</title>
+<style>
+body {
+  font-family: "Lato", sans-serif;
+  background-color:gray;
+}
+
+.center {
+  background-color:white;
+  margin: auto;
+
+  width: 75%;
+  border: 3px solid blue;
+  padding: 10px;
+}
+
+.sidenav {
+
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 6px 6px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.ff{
+  font-family: "Trirong", serif;
+
+}
+
+
+</style>
+</head>
+
+
+<body>
+
+
+
+<div class="sidenav">
+  <a href="#all-books">All Books</a>
+  <a href="#your-books">Your Books</a>
+  <a href="#about-us">About Us</a>
+
+  <a href="/">Log Out</a>
+</div>
+
+
+
+
+
+
+
+<br><br><br>
+
+<h1 class="ff" style="text-align:center;" id="all-books">All BOOKs</h1>
+<div class="center">
+    <ul  style="display:inline-block;text-align:center;">
+{% for item in data %}
+    <li   id=".view" style="display: inline-block;padding: 20px;" >
+        <div class="card" style="display: inline-block;width: 22rem;">
+            <img src="{% static 'users/images/books-images/'|add:item.image %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">{{item.title}}</h3>
+                <p class="card-text">Book Description :{{item.description}}.</p>
+                <p class="card-text">Book status :{{item.status}}.</p>
+                {% if item.status == 'Available' %}
+                <a href="borrow/{{item.id}}" class="btn btn-primary">Borrow</a>
+                {% endif %}
+            </div>
+        </div>
+    </li>
+
+{% endfor %}
+    </ul>
+
+</div>
+
+
+
+
+<br><br><br>
+
+
+
+
+
+
+
+
+<h1 class="ff" style="text-align:center" id="your-books">YOUR BOOKs</h1>
+
+<div class="center">
+    <ul  style="display:inline-block;text-align:center;">
+{% for item in data %}
+        {% if user.name == item.bookuser %}
+    <li   id=".view2" style="display: inline-block;padding: 20px;" >
+        <div class="card" style="display: inline-block;width: 22rem;">
+            <img src="{% static 'users/images/books-images/'|add:item.image %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">{{item.title}}</h3>
+                <p class="card-text">Book Description :{{item.description}}.</p>
+                <p class="card-text">Book status :{{item.status}}.</p>
+
+            </div>
+        </div>
+    </li>
+        {% endif %}
+
+{% endfor %}
+    </ul>
+
+</div>
+
+
+
+<br><br><br>
+
+
+<h1 class="ff" style="text-align:center" id="about-us">About us</h1>
+
+<div class="center">
+    <h1 style="color:blue" >About our Libarary</h1>
+    <h2 >
+        <br>
+
+        University Book Store is a student-founded,<br>
+        for-profit trust benefitting University of Washington students,<br>
+        faculty, and staff—meaning that 100% of our profits,<br>
+        after operating costs, go directly back to UW students.
+    </h2>
+
+</div>
+
+<br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+

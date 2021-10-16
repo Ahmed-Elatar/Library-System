@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add</title>
+    <style>
+        * {
+  box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password],input[type=number],input[type=email] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus,input[type=number]:focus,{
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.addbookbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.addbookbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+input {
+  border: 2px solid currentcolor;
+}
+input:invalid {
+  border: 2px dashed red;
+}
+input:invalid:focus {
+  background-image: linear-gradient(pink, lightgreen);
+}
+
+body {font-family: Arial, Helvetica, sans-serif;margin:50px;background-color:gray}
+form {border: 3px solid #f1f1f1;
+background-color:white;
+
+}
+
+
+
+    </style>
+
+
+
+
+
+</head>
+<body>
+
+
+
+
+
+
+
+
+<form method="POST"   >
+      {%csrf_token%}
+
+  <div class="container">
+    <h1>Add New Book</h1>
+    <p>Please fill in this form to add a Book.</p>
+    <hr>
+
+    <label for="title"><b>Title</b></label>
+    <input type="text" placeholder="Enter Title" name="title" id="title" required>
+
+    <label for="desc"><b>Description</b></label>
+    <input type="text" placeholder="Enter Book Description" name="description" id="desc" required>
+
+    <label for="image"><b>Image</b></label>
+    <input type="text" placeholder="Enter Book's Image Name" name="image" id="image" required>
+
+
+
+    <label for="cat"><b>CAT.</b></label>
+    <input type="text" placeholder="Book's CAT.." name="cat" id="cat"  required>
+
+
+
+
+     <button type="submit" class="addbookbtn">ADD</button>
+      <br><br><br>
+      <a href="/"   class="addbookbtn" style="background-color: blue;text-decoration : none;" >Back Home</a>
+      <a href="/log-reg/admin"   class="addbookbtn" style="background-color: red; text-decoration : none;"  >Back to Admin</a>
+
+
+
+
+  </div>
+
+</form>
+
+
+<script>
+  {% if wrong == 'wrong' %}
+
+  alert("Used Title")
+
+  {% endif %}
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

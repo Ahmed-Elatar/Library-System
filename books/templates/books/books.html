@@ -1,0 +1,57 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+
+{% block body  %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>I-N-K</title>
+<style>
+.center {
+  margin: auto;
+  width: 75%;
+  border: 3px solid blue;
+  padding: 10px;
+}
+</style>
+</head>
+
+
+<body>
+
+
+
+<div class="center">
+    <ul  style="display:inline-block;text-align:center;">
+{% for item in data %}
+    <li   id=".view" style="display: inline-block;padding: 20px;" >
+        <div class="card" style="display: inline-block;width: 22rem;">
+            <img src="{% static 'books/images/'|add:item.image %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">{{item.title}}</h3>
+                <p class="card-text">Book Description :{{item.description}}.</p>
+                <p class="card-text">Book status :{{item.status}}.</p>
+                {% if item.status == 'Available' %}
+                <a href="#" class="btn btn-primary">Borrow</a>
+                {% endif %}
+            </div>
+        </div>
+    </li>
+
+{% endfor %}
+    </ul>
+
+</div>
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+{% endblock %}

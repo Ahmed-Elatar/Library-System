@@ -1,0 +1,136 @@
+{% load static %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    body{background-color:gray}
+
+
+
+        .btn {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.center {
+  background-color:white;
+  margin: auto;
+  width: 80%;
+  border: 3px solid blue;
+  padding: 10px;
+}
+.card{border: 3px solid blue;
+  padding: 10px;}
+
+.card-img-top{
+width:350px
+}
+
+
+
+    </style>
+
+
+
+</head>
+<body>
+
+
+
+
+
+<br><br><br><br>
+
+
+
+<div class="center">
+    <ul  style="display:inline-block;text-align:center;">
+
+    <li   id=".view" style="display: inline-block;padding: 20px;" >
+        <div class="card" style="display: inline-block;width: 22rem;">
+            <img src="{% static 'users/images/img_avatar2.png' %}"class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">Register</h3>
+                <p class="card-text"> if you new user</p>
+
+
+                <a href="/log-reg/register"><button class=" btn" style="background-color: #008CBA;">Register</button></a>
+            </div>
+        </div>
+    </li>
+
+
+        <li   id=".view2" style="display: inline-block;padding: 20px;" >
+        <div class="card" style="display: inline-block;width: 22rem;">
+            <img src="{% static 'users/images/user-avatar.png' %}" class="card-img-top" style="height:350px" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">Login as User </h3>
+                <p class="card-text">if you already have an account</p>
+
+
+                <a href="/log-reg/login"><button class=" btn" style="background-color: #4CAF50;">Login </button></a>
+
+
+            </div>
+        </div>
+    </li>
+
+        <li   id=".view3" style="display: inline-block;padding: 20px;" >
+        <div class="card" style="display: inline-block;width: 22rem;">
+            <img src="{% static 'users/images/operator_m.png' %}" class="card-img-top" style="height:350px" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">Login as Admin </h3>
+                <p class="card-text">if you already  an Admin</p>
+
+
+                <a href="/log-reg/admin"><button class=" btn" style="background-color: red;">Login As Admin</button></a>
+
+
+            </div>
+        </div>
+    </li>
+
+    <a href="/"><button class=" btn" style="background-color: gray;">Back Home </button></a>
+
+
+
+
+
+
+
+
+    </ul>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

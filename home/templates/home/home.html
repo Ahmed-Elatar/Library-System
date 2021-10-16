@@ -1,0 +1,254 @@
+{% load static %}
+<html>
+
+<head>
+<title>I-N-K</title>
+<meta name="viewport" >
+<style>
+
+body{background-color:gray}
+
+
+
+.center,#bookviewer {
+background-color:white;
+  margin: auto;
+  width: 70%;
+  border: 3px solid blue;
+  padding: 10px;
+}
+
+.Lbutton {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.sidenav {
+
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 6px 6px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.ff{
+  font-family: "Trirong", serif;
+
+}
+
+
+
+
+
+
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.containerr {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+
+
+
+
+
+
+
+
+</style>
+
+</head>
+
+<body>
+
+
+
+
+
+<div class="sidenav">
+  <a href="/log-reg">Login & Register</a>
+  <a href="#about-us">About us</a>
+  <a href="#contact-us">Contact us</a>
+
+</div>
+
+<h1 style="font-size:120px;color:darkblue;text-align:center">I N K <span style="font-size:60px">FOR BOOKs</span></h1>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+
+
+
+    <div class="w3-content w3-section" id="bookviewer" style="max-width:500px">
+
+    {% for item in data %}
+                <img class="mySlides" src="{% static 'books/images/'|add:item.image %}" style="width:70%;margin: auto; ">
+                <h2 class="mytext" style="text-align:center;font: "> {{item.title}}</h2>
+    {% endfor %}
+
+    </div>
+
+
+
+
+
+</div>
+
+
+
+<br><br><br><br><br>
+
+
+<h1 class="ff" style="text-align:center" id="about-us">About us</h1>
+
+<div class="center">
+    <h1 style="color:blue" >About our Libarary</h1>
+    <h2 >
+        <br>
+
+        University Book Store is a student-founded,<br>
+        for-profit trust benefitting University of Washington students,<br>
+        faculty, and staff—meaning that 100% of our profits,<br>
+        after operating costs, go directly back to UW students.
+    </h2>
+
+</div>
+
+
+
+
+<br><br><br><br><br>
+
+
+<h1 class="ff" style="text-align:center" id="contact-us">Contact us</h1>
+
+<div class="center">
+    <h1 style="text-align:center;color:red" >We care about your opinion</h1>
+
+<div class="containerr">
+  <form method="POST" >
+          {%csrf_token%}
+
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="name" placeholder="Your Name.." required>
+
+    <label for="country">Faculty</label>
+    <input type="text" id="faculty" name="faculty" placeholder="Your Name.." required>
+
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px" required></textarea >
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+
+</div>
+
+
+
+
+
+
+<br><br><br>
+
+<script>
+
+
+
+
+/////////////////////////////////////////////////
+
+
+
+
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var y = document.getElementsByClassName("mytext");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+     y[i].style.display = "none";
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}
+  x[myIndex-1].style.display = "block";
+  y[myIndex-1].style.display = "block";
+  setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+
+
+
+</script>
+
+</body>
+</html>

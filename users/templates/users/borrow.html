@@ -1,0 +1,79 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <title>Title</title>
+    <style>
+        body {
+  font-family: "Lato", sans-serif;
+  background-color:gray;
+}
+
+.center {
+  background-color:white;
+  margin: auto;
+
+  width: 40%;
+  border: 3px solid blue;
+  padding: 10px;
+}
+
+
+
+    </style>
+
+</head>
+<body>
+
+<br><br>
+
+
+
+
+<div class="center">
+    <ul  style="display:inline-block;text-align:center;">
+{% for item in data %}
+    <li   id=".view2" style="display: inline-block;padding: 20px;" >
+        <div class="card" style="display: inline-block;width: 22rem;">
+            <img src="{% static 'users/images/books-images/'|add:item.image %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">{{item.title}}</h3>
+                <p class="card-text">Book Description :{{item.description}}.</p>
+                <p class="card-text">Book status :{{item.status}}.</p>
+                <form method='POST' action='#'>
+                        {%csrf_token%}
+
+                      <a href="/"><input type="submit"  name="borrow"value="borrow" /></a>
+                </form>
+            </div>
+        </div>
+    </li>
+
+
+
+
+{% endfor %}
+    </ul>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
